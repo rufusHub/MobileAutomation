@@ -18,7 +18,7 @@ public class Base {
 		public void configuration() throws MalformedURLException {
 			
 			//<Start Appium server from code>
-			File js = new File("C:\\Users\\bermudez\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js");
+			File js = new File("/home/rufo/.nvm/versions/node/v20.12.1/lib/node_modules/appium/build/lib/main.js");
 			
 			AppiumDriverLocalService service =
 					  new AppiumServiceBuilder()
@@ -30,7 +30,7 @@ public class Base {
 					  service.start();
 					  
 		    //<Desire capabilities>
-			File app = new File("C:\\Users\\bermudez\\Documentos\\Deepak_Chanana\\Zipeados\\ApiDemo.apk");		  
+			File app = new File("/home/rufo/Documents/ApiDemo.apk");		  
 			
 			DesiredCapabilities cap = new DesiredCapabilities();		 
 			cap.setCapability("app", app.getAbsolutePath());

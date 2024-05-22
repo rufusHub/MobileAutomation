@@ -36,11 +36,50 @@ public class firstTestCase extends Base {
 		Thread.sleep(2000);		
 	}
 	
+	public void ScrollingFirstapproach() throws InterruptedException{
+		driver.findElement(AppiumBy.accessibilityId("Views")).click();
+		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"WebView\"))"));
+	    Thread.sleep(2000);
+	}
+	
+	public void ScrollingSecondapproach() throws InterruptedException{
+		driver.findElement(AppiumBy.accessibilityId("Views")).click();
+		
+		boolean canScrollMore;
+		
+		do {
+			canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture", ImmutableMap.of(
+			    "left", 100, "top", 100, "width", 200, "height", 400,
+			    "direction", "down",
+			    "percent", 1.0
+			));
+		} while(canScrollMore);
+	}
+	
+	public void swipeGesture() throws InterruptedException{
+		driver.findElement(AppiumBy.accessibilityId("Views")).click();
+		driver.findElement(AppiumBy.accessibilityId("Gallery")).click();
+		driver.findElement(By.xpath("//android.widget.TextView[@text='1. Photos']")).click();
+		WebElement firstImage=driver.findElement(By.xpath("//android.widget.ImageView[1]"));
+		swipeAction(firstImage, "left");
+	}
+	
+	public void swipeAction(WebElement element,String direction) throws InterruptedException{
+		((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of("elementId",((RemoteWebElement)element).getId(),
+				"left", 100, "top", 100, "width", 1000, "height", 200,
+				"direction", direction,
+				"percent", 1.0,"speed",15000
+		));	
+	}
+	
 	public static void main(String[] args) throws MalformedURLException, InterruptedException {
 		
-		firstTestCase ob = new firstTestCase();
-		ob.configuration();
-//		ob.simpleEvents();
-		ob.LongPress();		
+		firstTestCase obj = new firstTestCase();
+		obj.configuration();
+//		obj.simpleEvents();
+//		obj.LongPress();
+//		obj.ScrollingFirstapproach();
+//		obj.ScrollingSecondapproach(); //need to change 'height' value.
+		obj.swipeGesture();
 	}
 }

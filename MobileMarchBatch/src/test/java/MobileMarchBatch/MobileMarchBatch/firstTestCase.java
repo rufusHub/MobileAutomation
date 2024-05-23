@@ -2,6 +2,7 @@ package MobileMarchBatch.MobileMarchBatch;
 
 import java.net.MalformedURLException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.DeviceRotation;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
@@ -9,6 +10,8 @@ import org.openqa.selenium.remote.RemoteWebElement;
 import com.google.common.collect.ImmutableMap;
 
 import io.appium.java_client.AppiumBy;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 
 public class firstTestCase extends Base {
 	
@@ -17,14 +20,33 @@ public class firstTestCase extends Base {
 		button.click();
 		WebElement preferenceDep = driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"3. Preference dependencies\"]"));
 		preferenceDep.click();
-		WebElement checkbox = driver.findElement(By.id("android:id/checkbox")); 
+		
+		WebElement checkbox = driver.findElement(By.id("android:id/checkbox")); // select checkbox
 		checkbox.click();
+		
+//		DeviceRotation landScape = new DeviceRotation(0,0,90);	// rotates the device!
+//		driver.rotate(landScape);
+		
 		WebElement wifisetting = driver.findElement(By.xpath("//android.widget.LinearLayout[2]/android.widget.RelativeLayout"));
 		wifisetting.click();
-		WebElement text  = driver.findElement(By.id("android:id/edit"));
-		text.sendKeys("RodrigoM");
+		
+		driver.setClipboardText("RodrigoM");	    // COPIE text
+		
+		WebElement text  = driver.findElement(By.id("android:id/edit"));	// selects 'Wifi Settings'
+		
+		text.sendKeys(driver.getClipboardText());	// PASTE text.
+		
+		//text.sendKeys("RodrigoM");				// insert text directly.
+		
+//		driver.pressKey(new KeyEvent(AndroidKey.ENTER));	// Press 'ENTER' key.
+		
+//		driver.hideKeyboard();
+		
 		WebElement ok = driver.findElement(By.id("android:id/button1"));
 		ok.click();
+		
+		driver.pressKey(new KeyEvent(AndroidKey.BACK));
+		driver.pressKey(new KeyEvent(AndroidKey.HOME));
 	}
 	
 	public void LongPress() throws InterruptedException {
@@ -72,14 +94,33 @@ public class firstTestCase extends Base {
 		));	
 	}
 	
+	public void DragAndDrop() throws InterruptedException {
+		driver.findElement(AppiumBy.accessibilityId("Views")).click();
+		driver.findElement(AppiumBy.accessibilityId("Drag and Drop")).click();
+		WebElement source =  driver.findElement(By.id("io.appium.android.apis:id/drag_dot_1"));
+		
+		((JavascriptExecutor) driver).executeScript("mobile: dragGesture", ImmutableMap.of(
+			    "elementId", ((RemoteWebElement) source).getId(),
+			    "endX", 619,
+			    "endY", 577
+			));
+		Thread.sleep(5000);
+		
+		String result = driver.findElement(By.id("io.appium.android.apis:id/drag_result_text")).getText();
+		System.out.println("Result is " + result);
+	}
+	
+	
 	public static void main(String[] args) throws MalformedURLException, InterruptedException {
 		
 		firstTestCase obj = new firstTestCase();
 		obj.configuration();
-//		obj.simpleEvents();
+		obj.simpleEvents();
 //		obj.LongPress();
 //		obj.ScrollingFirstapproach();
 //		obj.ScrollingSecondapproach(); //need to change 'height' value.
-		obj.swipeGesture();
+//		obj.swipeGesture();
+//		obj.DragAndDrop();
+		
 	}
 }

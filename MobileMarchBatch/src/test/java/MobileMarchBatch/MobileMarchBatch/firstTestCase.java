@@ -115,7 +115,7 @@ public class firstTestCase extends Base {
 		
 		firstTestCase obj = new firstTestCase();
 		obj.configuration();
-		obj.simpleEvents();
+//		obj.simpleEvents();
 //		obj.LongPress();
 //		obj.ScrollingFirstapproach();
 //		obj.ScrollingSecondapproach(); //need to change 'height' value.

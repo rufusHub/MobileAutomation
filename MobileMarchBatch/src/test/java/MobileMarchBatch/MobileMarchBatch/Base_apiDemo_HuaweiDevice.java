@@ -12,9 +12,9 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
-public class Base_generalStore_HuaweiDevice {
+public class Base_apiDemo_HuaweiDevice {
 
-		public static AndroidDriver  driver2;
+		public static AndroidDriver  driver;
 	
 		public void configuration() throws MalformedURLException {
 			
@@ -31,7 +31,7 @@ public class Base_generalStore_HuaweiDevice {
 					  service.start();
 					  
 		    //<Desire capabilities>
-			File app = new File("C:\\Users\\bermudez\\Documentos\\Deepak_Chanana\\Zipeados\\GeneralStore.apk");		  
+			File app = new File("C:\\Users\\bermudez\\Documentos\\Deepak_Chanana\\Zipeados\\ApiDemo.apk");		  
 			
 			DesiredCapabilities cap = new DesiredCapabilities();		 
 			cap.setCapability("app", app.getAbsolutePath());
@@ -39,7 +39,7 @@ public class Base_generalStore_HuaweiDevice {
 			cap.setCapability("platformName", "Android");
 			cap.setCapability("automationName","UiAutomator2"); 
 			  
-			driver2 = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+			driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 			
 		}
 }

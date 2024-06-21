@@ -75,15 +75,24 @@ public class thirdTestCase_apiDemo_HuaweiDevice extends Base_apiDemo_HuaweiDevic
 		
 	}
 	
+	public void PreferenceXML_PreferenceAttributes() {
+		String child_i = driver.findElement(By.xpath("//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"Child checkbox preference\"]")).getAttribute("enabled");
+		System.out.println(child_i);
+		driver.findElement(By.xpath("(//android.widget.CheckBox[@resource-id=\"android:id/checkbox\"])[1]")).click();
+		driver.findElement(By.xpath("(//android.widget.CheckBox[@resource-id=\"android:id/checkbox\"])[2]")).click();
+		String child_f = driver.findElement(By.xpath("//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"Child checkbox preference\"]")).getAttribute("enabled");
+		System.out.println(child_f);
+	}
 	
-	
+											
 	public static void main(String[] args) throws MalformedURLException, InterruptedException {
 		
 		thirdTestCase_apiDemo_HuaweiDevice obj = new thirdTestCase_apiDemo_HuaweiDevice();
 		obj.configuration();
 //		obj.preferenceXML_checkbox();
 //		obj.preferenceXML_editTextPreference();
-		obj.PreferenceXML_listPreference();
+//		obj.PreferenceXML_listPreference();
+		obj.PreferenceXML_PreferenceAttributes();
 	}
 }
 

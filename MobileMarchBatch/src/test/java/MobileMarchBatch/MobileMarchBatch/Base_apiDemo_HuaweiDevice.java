@@ -19,7 +19,7 @@ public class Base_apiDemo_HuaweiDevice {
 		public void configuration() throws MalformedURLException {
 			
 			//<Start Appium server from code>
-			File js = new File("C:\\Users\\bermudez\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js");
+			File js = new File("/home/rufo/.nvm/versions/node/v20.12.1/lib/node_modules/appium/build/lib/main.js");
 			
 			AppiumDriverLocalService service =
 					  new AppiumServiceBuilder()
@@ -31,7 +31,7 @@ public class Base_apiDemo_HuaweiDevice {
 					  service.start();
 					  
 		    //<Desire capabilities>
-			File app = new File("C:\\Users\\bermudez\\Documentos\\Deepak_Chanana\\Zipeados\\ApiDemo.apk");		  
+			File app = new File("/home/rufo/Documents/ApiDemo.apk");		  
 			
 			DesiredCapabilities cap = new DesiredCapabilities();		 
 			cap.setCapability("app", app.getAbsolutePath());
@@ -52,3 +52,9 @@ public class Base_apiDemo_HuaweiDevice {
 //Open settings
 //Find development options
 //Enable ADB over USB.
+
+//File js = new File("/home/rufo/.nvm/versions/node/v20.12.1/lib/node_modules/appium/build/lib/main.js");
+//File js = new File("C:\\Users\\bermudez\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js");
+
+//File app = new File("/home/rufo/Documents/GeneralStore.apk");
+//File app = new File("C:\\Users\\bermudez\\Documentos\\Deepak_Chanana\\Zipeados\\ApiDemo.apk");

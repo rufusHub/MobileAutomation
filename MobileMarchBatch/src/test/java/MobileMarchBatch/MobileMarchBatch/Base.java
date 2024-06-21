@@ -42,3 +42,18 @@ public class Base {
 			
 		}
 }
+
+
+//Dial *#*#2846579#*#*
+//Select background
+//Select USB mode
+//Select "Google mode"
+//Open settings
+//Find development options
+//Enable ADB over USB.
+
+//File js = new File("/home/rufo/.nvm/versions/node/v20.12.1/lib/node_modules/appium/build/lib/main.js");
+//File js = new File("C:\\Users\\bermudez\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js");
+
+//File app = new File("/home/rufo/Documents/GeneralStore.apk");
+//File app = new File("C:\\Users\\bermudez\\Documentos\\Deepak_Chanana\\Zipeados\\ApiDemo.apk");
